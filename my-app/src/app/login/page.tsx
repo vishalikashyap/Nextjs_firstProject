@@ -47,33 +47,36 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen" style={{ backgroundColor: "#0B0C10" }}>
-      <div className="p-8 rounded-2xl shadow-lg w-full max-w-md" style={{ backgroundColor: "#1F2833" }}>
-        <h1 className="text-2xl font-bold text-center mb-6" style={{ color: "#C5C6C7" }}>
+    <div
+      className="flex items-center justify-center min-h-screen bg-cover bg-center relative"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80')",
+      }}
+    >
+      {/* Overlay for dark effect */}
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+
+      <div className="relative z-10 p-8 rounded-2xl shadow-2xl w-full max-w-md bg-[#1F2833]/90 border border-[#45A29E]/40">
+        <h1 className="text-3xl font-bold text-center mb-6 text-[#66FCF1] tracking-wide">
           {step === "choose"
-            ? "Login Method "
+            ? "Welcome Back!"
             : step === "login"
-            ? `Login with ${otpMethod === "email" ? "Email " : "Phone"}`
-            : "Enter OTP "}
+            ? `Login with ${otpMethod === "email" ? "Email" : "Phone"}`
+            : "Verify OTP"}
         </h1>
 
         {step === "choose" && (
           <div className="space-y-4">
             <button
               onClick={() => handleChooseMethod("email")}
-              className="w-full py-2 rounded-lg font-medium"
-              style={{ backgroundColor: "#66FCF1", color: "#0B0C10" }}
-              onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#45A29E")}
-              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#66FCF1")}
+              className="w-full py-3 rounded-xl font-semibold bg-[#66FCF1] text-[#0B0C10] hover:bg-[#45A29E] transition"
             >
               Login with Email
             </button>
             <button
               onClick={() => handleChooseMethod("phone")}
-              className="w-full py-2 rounded-lg font-medium"
-              style={{ backgroundColor: "#66FCF1", color: "#0B0C10" }}
-              onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#45A29E")}
-              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#66FCF1")}
+              className="w-full py-3 rounded-xl font-semibold bg-[#66FCF1] text-[#0B0C10] hover:bg-[#45A29E] transition"
             >
               Login with Phone
             </button>
@@ -85,11 +88,10 @@ export default function LoginPage() {
             {otpMethod === "email" && (
               <input
                 type="email"
-                placeholder="Enter Email"
+                placeholder="Enter your Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg"
-                style={{ backgroundColor: "#0B0C10", color: "#C5C6C7", border: "1px solid #45A29E" }}
+                className="w-full px-4 py-3 rounded-lg bg-[#0B0C10] text-[#C5C6C7] border border-[#45A29E]/60 focus:outline-none focus:ring-2 focus:ring-[#66FCF1]"
               />
             )}
             {otpMethod === "phone" && (
@@ -98,25 +100,20 @@ export default function LoginPage() {
                 placeholder="Enter Phone Number"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg"
-                style={{ backgroundColor: "#0B0C10", color: "#C5C6C7", border: "1px solid #45A29E" }}
+                className="w-full px-4 py-3 rounded-lg bg-[#0B0C10] text-[#C5C6C7] border border-[#45A29E]/60 focus:outline-none focus:ring-2 focus:ring-[#66FCF1]"
               />
             )}
 
             <button
               onClick={handleSendOtp}
-              className="w-full py-2 rounded-lg font-medium"
-              style={{ backgroundColor: "#66FCF1", color: "#0B0C10" }}
-              onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#45A29E")}
-              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#66FCF1")}
+              className="w-full py-3 rounded-xl font-semibold bg-[#66FCF1] text-[#0B0C10] hover:bg-[#45A29E] transition"
             >
               Send OTP
             </button>
 
             <button
               onClick={() => setStep("choose")}
-              className="w-full text-sm underline"
-              style={{ color: "#C5C6C7" }}
+              className="w-full text-sm underline text-[#C5C6C7] hover:text-[#66FCF1] transition"
             >
               ← Back
             </button>
@@ -130,15 +127,11 @@ export default function LoginPage() {
               placeholder="Enter OTP"
               value={otp}
               onChange={(e) => setOtp(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg"
-              style={{ backgroundColor: "#0B0C10", color: "#C5C6C7", border: "1px solid #45A29E" }}
+              className="w-full px-4 py-3 rounded-lg bg-[#0B0C10] text-[#C5C6C7] border border-[#45A29E]/60 focus:outline-none focus:ring-2 focus:ring-[#66FCF1]"
             />
             <button
               onClick={handleVerifyOtp}
-              className="w-full py-2 rounded-lg font-medium"
-              style={{ backgroundColor: "#66FCF1", color: "#0B0C10" }}
-              onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#45A29E")}
-              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#66FCF1")}
+              className="w-full py-3 rounded-xl font-semibold bg-[#66FCF1] text-[#0B0C10] hover:bg-[#45A29E] transition"
             >
               Verify OTP & Login
             </button>
@@ -146,9 +139,9 @@ export default function LoginPage() {
         )}
 
         {step !== "verify" && (
-          <div className="mt-6 text-center text-sm" style={{ color: "#C5C6C7" }}>
+          <div className="mt-6 text-center text-sm text-[#C5C6C7]">
             Don’t have an account?{" "}
-            <a href="/signup" style={{ color: "#66FCF1" }}>
+            <a href="/signup" className="text-[#66FCF1] hover:underline">
               Sign up
             </a>
           </div>

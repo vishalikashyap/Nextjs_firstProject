@@ -50,71 +50,70 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#0B0C10]">
-      <div className="bg-[#1F2833] p-8 rounded-2xl shadow-xl w-full max-w-md border border-[#45A29E]">
+    <div
+      className="flex items-center justify-center min-h-screen bg-cover bg-center relative"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80')",
+      }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+
+      {/* Signup Card */}
+      <div className="relative z-10 p-8 rounded-2xl shadow-2xl w-full max-w-md bg-[#1F2833]/90 border border-[#45A29E]/40">
         <h1 className="text-3xl font-extrabold text-center mb-2 text-[#66FCF1]">
           {step === "signup" ? "Join LearnWithUs" : "Verify Your OTP"}
         </h1>
-       <div className="text-3xl font-extrabold text-center mb-6 text-[#66FCF1]">
-          {step === "signup" ? "Sign Up" : "Sign Up"}
-        </div>
+        <p className="text-center text-[#C5C6C7] mb-6">
+          {step === "signup" ? "Create your account and start learning" : "Enter the OTP sent to you"}
+        </p>
 
-
+        {/* Step: Signup */}
         {step === "signup" ? (
           <div className="space-y-4 text-[#C5C6C7]">
-            {/* Name & Phone side by side */}
+            {/* Name & Phone */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Full Name */}
               <div>
-                <label className="block text-sm font-medium mb-1">
-                  Full Name <span className="text-red-500">*</span>
-                </label>
+                <label className="block text-sm font-medium mb-1">Full Name *</label>
                 <input
                   type="text"
                   placeholder="Enter your full name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-2 bg-[#0B0C10] border border-[#45A29E] rounded-lg text-[#C5C6C7] focus:ring-2 focus:ring-[#66FCF1]"
+                  className="w-full px-4 py-2 bg-[#0B0C10] border border-[#45A29E]/60 rounded-lg text-[#C5C6C7] focus:ring-2 focus:ring-[#66FCF1]"
                 />
               </div>
-
-              {/* Phone */}
               <div>
-                <label className="block text-sm font-medium mb-1">
-                  Phone Number <span className="text-red-500">*</span>
-                </label>
+                <label className="block text-sm font-medium mb-1">Phone Number *</label>
                 <input
                   type="tel"
                   placeholder="Enter phone number"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-4 py-2 bg-[#0B0C10] border border-[#45A29E] rounded-lg text-[#C5C6C7] focus:ring-2 focus:ring-[#66FCF1]"
+                  className="w-full px-4 py-2 bg-[#0B0C10] border border-[#45A29E]/60 rounded-lg text-[#C5C6C7] focus:ring-2 focus:ring-[#66FCF1]"
                 />
               </div>
             </div>
 
             {/* Address */}
             <div>
-              <label className="block text-sm font-medium mb-1">
-                Address <span className="text-red-500">*</span>
-              </label>
+              <label className="block text-sm font-medium mb-1">Address *</label>
               <textarea
                 placeholder="Enter address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                className="w-full px-4 py-2 bg-[#0B0C10] border border-[#45A29E] rounded-lg text-[#C5C6C7] focus:ring-2 focus:ring-[#66FCF1]"
+                className="w-full px-4 py-2 bg-[#0B0C10] border border-[#45A29E]/60 rounded-lg text-[#C5C6C7] focus:ring-2 focus:ring-[#66FCF1]"
               />
             </div>
 
             {/* Role */}
             <div>
-              <label className="block text-sm font-medium mb-1">
-                Role <span className="text-red-500">*</span>
-              </label>
+              <label className="block text-sm font-medium mb-1">Role *</label>
               <select
                 value={role}
                 onChange={(e) => setRole(e.target.value as "user" | "admin")}
-                className="w-full px-4 py-2 bg-[#0B0C10] border border-[#45A29E] rounded-lg text-[#C5C6C7] focus:ring-2 focus:ring-[#66FCF1]"
+                className="w-full px-4 py-2 bg-[#0B0C10] border border-[#45A29E]/60 rounded-lg text-[#C5C6C7] focus:ring-2 focus:ring-[#66FCF1]"
               >
                 <option value="user">Student</option>
                 <option value="admin">Teacher</option>
@@ -123,15 +122,13 @@ export default function SignupPage() {
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-medium mb-1">
-                Email Address <span className="text-red-500">*</span>
-              </label>
+              <label className="block text-sm font-medium mb-1">Email Address *</label>
               <input
                 type="email"
                 placeholder="Enter email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 bg-[#0B0C10] border border-[#45A29E] rounded-lg text-[#C5C6C7] focus:ring-2 focus:ring-[#66FCF1]"
+                className="w-full px-4 py-2 bg-[#0B0C10] border border-[#45A29E]/60 rounded-lg text-[#C5C6C7] focus:ring-2 focus:ring-[#66FCF1]"
               />
             </div>
 
@@ -164,6 +161,7 @@ export default function SignupPage() {
               </div>
             </div>
 
+            {/* Signup Button */}
             <button
               onClick={handleSignup}
               className="w-full bg-[#66FCF1] text-[#0B0C10] py-2 rounded-lg font-semibold hover:bg-[#45A29E] transition"
@@ -172,6 +170,7 @@ export default function SignupPage() {
             </button>
           </div>
         ) : (
+          // Step: Verify
           <div className="space-y-4 text-[#C5C6C7]">
             <label className="block text-sm font-medium mb-1">Enter OTP</label>
             <input
@@ -179,7 +178,7 @@ export default function SignupPage() {
               placeholder="Enter OTP"
               value={otp}
               onChange={(e) => setOtp(e.target.value)}
-              className="w-full px-4 py-2 bg-[#0B0C10] border border-[#45A29E] rounded-lg text-[#C5C6C7] focus:ring-2 focus:ring-[#66FCF1]"
+              className="w-full px-4 py-2 bg-[#0B0C10] border border-[#45A29E]/60 rounded-lg text-[#C5C6C7] focus:ring-2 focus:ring-[#66FCF1]"
             />
             <button
               onClick={handleVerifyOtp}
@@ -190,9 +189,10 @@ export default function SignupPage() {
           </div>
         )}
 
+        {/* Footer */}
         <div className="mt-6 text-center text-sm text-[#C5C6C7]">
           Already have an account?{" "}
-          <a href="/login" className="text-[#66FCF1] hover:text-[#45A29E] font-medium">
+          <a href="/login" className="text-[#66FCF1] hover:underline">
             Login
           </a>
         </div>
