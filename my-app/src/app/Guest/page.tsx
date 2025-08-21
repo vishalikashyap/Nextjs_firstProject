@@ -159,11 +159,14 @@ export default function GuestDashboard() {
                 Get Started
               </button>
               <button
-                onClick={() => router.push("/courses")}
-                className="px-6 py-3 rounded-lg border border-[#66FCF1] text-[#66FCF1] font-medium hover:bg-[#66FCF1] hover:text-[#0B0C10] transition-all shadow-md"
-              >
-                Explore Courses
-              </button>
+  onClick={() => {
+    const section = document.getElementById("popular-courses");
+    section?.scrollIntoView({ behavior: "smooth" });
+  }}
+  className="px-6 py-3 rounded-lg border border-[#66FCF1] text-[#66FCF1] font-medium hover:bg-[#66FCF1] hover:text-[#0B0C10] transition-all shadow-md"
+>
+  Explore Courses
+</button>
             </div>
           </div>
         </div>
@@ -183,7 +186,7 @@ export default function GuestDashboard() {
       </div>
 
      {/* Course Section */}
-<section className="max-w-7xl mx-auto px-6 py-20">
+<section id="popular-courses" className="max-w-7xl mx-auto px-6 py-20">
   <h2 className="text-5xl font-extrabold text-center mb-14 bg-gradient-to-r from-[#66FCF1] to-[#45A29E] bg-clip-text text-transparent drop-shadow-lg">
     Popular Courses
   </h2>
