@@ -13,7 +13,7 @@ export async function GET(req: Request) {
   try {
     const decoded: any = jwt.verify(token, JWT_SECRET);
     const user = await User.findById(decoded.userId).select("-password");
-    return NextResponse.json({ user });
+    return NextResponse.json({ user,token });
   } catch {
     return NextResponse.json({ user: null });
   }

@@ -142,26 +142,7 @@ export default function LoginPage() {
             </button>
           </div>
         )}
-
-        {/* {step === "verify" && (
-          <div className="space-y-4">
-            <input
-              type="text"
-              placeholder="Enter OTP"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-[#0B0C10] text-[#C5C6C7] border border-[#45A29E]/60 focus:outline-none focus:ring-2 focus:ring-[#66FCF1]"
-            />
-            <button
-              onClick={handleVerifyOtp}
-              className="w-full py-3 rounded-xl font-semibold bg-[#66FCF1] text-[#0B0C10] hover:bg-[#45A29E] transition"
-            >
-              Verify OTP & Login
-            </button>
-          </div>
-        )} */}
-
-        {step === "verify" && (
+{step === "verify" && (
   <div className="space-y-4">
     <div className="flex justify-center">
       {[0, 1, 2, 3].map((i) => (

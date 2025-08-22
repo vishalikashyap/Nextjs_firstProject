@@ -11,6 +11,17 @@ export default function Dashboard() {
   useEffect(() => {
     fetch("/api/auth/me").then(async (res) => {
       const data = await res.json();
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          id: data.user?._id,
+          name: data.user?.name,
+          email: data.user?.email,
+          phone: data.user?.phone,
+          token: data.token,
+        })
+      );
+
       if (!data.user) router.push("/login");
       else setUser(data.user);
     });
