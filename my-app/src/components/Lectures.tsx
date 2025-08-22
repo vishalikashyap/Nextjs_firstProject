@@ -171,115 +171,126 @@ export default function Lectures() {
                         >
                             ✕
                         </button>
+                        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input
+                                name="title"
+                                value={formData.title}
+                                onChange={handleChange}
+                                placeholder="Title"
+                                className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 col-span-2"
+                                required
+                            />
+                            <input
+                                name="subject"
+                                value={formData.subject}
+                                onChange={handleChange}
+                                placeholder="Subject"
+                                className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            />
+                            <input
+                                name="teacher"
+                                value={formData.teacher}
+                                onChange={handleChange}
+                                placeholder="Teacher"
+                                className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            />
+                            <input
+                                type="date"
+                                name="date"
+                                value={formData.date}
+                                onChange={handleChange}
+                                className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            />
+                            <input
+                                type="time"
+                                name="time"
+                                value={formData.time}
+                                onChange={handleChange}
+                                className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            />
+                            <input
+                                name="duration"
+                                value={formData.duration}
+                                onChange={handleChange}
+                                placeholder="Duration"
+                                className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            />
+                            <textarea
+                                name="description"
+                                value={formData.description}
+                                onChange={handleChange}
+                                placeholder="Description"
+                                className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 col-span-2"
+                            />
+                            <input
+                                name="link"
+                                value={formData.link}
+                                onChange={handleChange}
+                                placeholder="Lecture Link"
+                                className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 col-span-2"
+                            />
 
-                       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-  <input
-    name="title"
-    value={formData.title}
-    onChange={handleChange}
-    placeholder="Title"
-    className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 col-span-2"
-    required
-  />
-  <input
-    name="subject"
-    value={formData.subject}
-    onChange={handleChange}
-    placeholder="Subject"
-    className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-  />
-  <input
-    name="teacher"
-    value={formData.teacher}
-    onChange={handleChange}
-    placeholder="Teacher"
-    className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-  />
-  <input
-    type="date"
-    name="date"
-    value={formData.date}
-    onChange={handleChange}
-    className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-  />
-  <input
-    type="time"
-    name="time"
-    value={formData.time}
-    onChange={handleChange}
-    className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-  />
-  <input
-    name="duration"
-    value={formData.duration}
-    onChange={handleChange}
-    placeholder="Duration"
-    className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-  />
-  <textarea
-    name="description"
-    value={formData.description}
-    onChange={handleChange}
-    placeholder="Description"
-    className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 col-span-2"
-  />
-  <input
-    name="link"
-    value={formData.link}
-    onChange={handleChange}
-    placeholder="Lecture Link"
-    className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 col-span-2"
-  />
+                            {/* Video File Input */}
+                            <div className="col-span-2">
+                                <label className="block mb-2 text-gray-700 font-semibold">Upload Video</label>
+                                <label className="flex items-center justify-between bg-gray-100 p-3 cursor-pointer hover:bg-gray-200 transition">
+                                    <div className="flex items-center gap-2">
+                                        <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm0 2h12v10H4V5zm5 1v4l3-2-3-2z" />
+                                        </svg>
+                                        <span className="text-gray-600">{formData.videoFile ? formData.videoFile.name : "Choose a video file..."}</span>
+                                    </div>
+                                    <input
+                                        type="file"
+                                        name="videoFile"
+                                        accept="video/*"
+                                        onChange={handleChange}
+                                        className="hidden"
+                                    />
+                                    <span className="px-4 py-1 bg-blue-600 text-white font-medium hover:bg-blue-700 transition rounded">Browse</span>
+                                </label>
+                            </div>
 
-  {/* Video File Input */}
-  <div className="col-span-2">
-    <label className="block mb-2 text-gray-700 font-semibold">Upload Video</label>
-    <label className="flex items-center justify-between bg-gray-100 p-3 cursor-pointer hover:bg-gray-200 transition">
-      <span className="text-gray-600">{formData.videoFile ? formData.videoFile.name : "Choose a video file..."}</span>
-      <input
-        type="file"
-        name="videoFile"
-        accept="video/*"
-        onChange={handleChange}
-        className="hidden"
-      />
-      <span className="px-4 py-1 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition">Browse</span>
-    </label>
-  </div>
+                            {/* Notes File Input */}
+                            <div className="col-span-2">
+                                <label className="block mb-2 text-gray-700 font-semibold">Upload Notes (PDF)</label>
+                                <label className="flex items-center justify-between bg-gray-100 p-3 cursor-pointer hover:bg-gray-200 transition">
+                                    <div className="flex items-center gap-2">
+                                        <svg className="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M8 2a2 2 0 00-2 2v12a2 2 0 002 2h4a2 2 0 002-2V4a2 2 0 00-2-2H8zm0 2h4v12H8V4zm2 1a1 1 0 00-.993.883L9 6v3H6a1 1 0 00-.117 1.993L6 11h3v3a1 1 0 001.993.117L11 14v-3h3a1 1 0 00.117-1.993L14 9h-3V6a1 1 0 00-1-1z" />
+                                        </svg>
+                                        <span className="text-gray-600">{formData.notesFile ? formData.notesFile.name : "Choose a PDF file..."}</span>
+                                    </div>
+                                    <input
+                                        type="file"
+                                        name="notesFile"
+                                        accept="application/pdf"
+                                        onChange={handleChange}
+                                        className="hidden"
+                                    />
+                                    <span className="px-4 py-1 bg-purple-600 text-white font-medium hover:bg-purple-700 transition rounded">Browse</span>
+                                </label>
+                            </div>
 
-  {/* Notes File Input */}
-  <div className="col-span-2">
-    <label className="block mb-2 text-gray-700 font-semibold">Upload Notes (PDF)</label>
-    <label className="flex items-center justify-between bg-gray-100 p-3 cursor-pointer hover:bg-gray-200 transition">
-      <span className="text-gray-600">{formData.notesFile ? formData.notesFile.name : "Choose a PDF file..."}</span>
-      <input
-        type="file"
-        name="notesFile"
-        accept="application/pdf"
-        onChange={handleChange}
-        className="hidden"
-      />
-      <span className="px-4 py-1 bg-purple-600 text-white font-medium rounded hover:bg-purple-700 transition">Browse</span>
-    </label>
-  </div>
 
-  {/* Submit + Cancel Buttons */}
-  <div className="col-span-2 flex justify-between gap-2 mt-2">
-    <button
-      type="submit"
-      className="flex-1 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition"
-    >
-      {editingId ? "Update Lecture" : "Add Lecture"}
-    </button>
-    <button
-      type="button"
-      onClick={() => { setShowModal(false); setEditingId(null); }}
-      className="flex-1 py-2 bg-gray-300 text-gray-800 font-semibold rounded hover:bg-gray-400 transition"
-    >
-      Cancel
-    </button>
-  </div>
-</form>
+                            {/* Submit + Cancel Buttons */}
+                            <div className="col-span-2 flex justify-between gap-2 mt-2">
+                                <button
+                                    type="submit"
+                                    className="flex-1 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition"
+                                >
+                                    {editingId ? "Update Lecture" : "Add Lecture"}
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => { setShowModal(false); setEditingId(null); }}
+                                    className="flex-1 py-2 bg-gray-300 text-gray-800 font-semibold rounded hover:bg-gray-400 transition"
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+
 
                     </div>
                 </div>
