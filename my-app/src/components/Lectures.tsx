@@ -13,6 +13,7 @@ type Lecture = {
     description: string;
     link: string;
     video?: string;
+    className: string; 
     notes?: string;
 };
 
@@ -36,6 +37,7 @@ export default function Lectures() {
         duration: "",
         description: "",
         link: "",
+        className: "", 
         videoFile: undefined,
         notesFile: undefined,
     });
@@ -93,6 +95,7 @@ export default function Lectures() {
             duration: "",
             description: "",
             link: "",
+            className:"",
             videoFile: undefined,
             notesFile: undefined,
         });
@@ -116,6 +119,7 @@ export default function Lectures() {
             duration: lecture.duration,
             description: lecture.description,
             link: lecture.link,
+            className: lecture.className,
             videoFile: undefined,
             notesFile: undefined,
         });
@@ -141,7 +145,7 @@ export default function Lectures() {
                     <div key={lecture._id} className="bg-white shadow-lg rounded-lg p-5 hover:shadow-xl transition flex flex-col justify-between">
                         <div>
                             <h2 className="text-xl font-bold text-gray-800">{lecture.title}</h2>
-                            <p className="text-sm text-gray-500 mt-1">{lecture.subject} — {lecture.teacher}</p>
+                            {lecture.subject} — {lecture.teacher} | <span className="font-medium">{lecture.className}</span>
                             <p className="text-xs text-gray-400 mt-1">{lecture.date} at {lecture.time} ({lecture.duration})</p>
                             <p className="mt-3 text-gray-700">{lecture.description}</p>
                         </div>
@@ -177,6 +181,14 @@ export default function Lectures() {
                                 value={formData.title}
                                 onChange={handleChange}
                                 placeholder="Title"
+                                className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 col-span-2"
+                                required
+                            />
+                            <input
+                                name="className"
+                                value={formData.className}
+                                onChange={handleChange}
+                                placeholder="Class (e.g., 10th Grade, B.Sc Physics)"
                                 className="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 col-span-2"
                                 required
                             />

@@ -31,6 +31,7 @@ export async function POST(req: Request) {
     const duration = formData.get("duration") as string;
     const description = formData.get("description") as string;
     const link = formData.get("link") as string;
+     const className = formData.get("className") as string; 
 
     let videoUrl = "";
     let notesUrl = "";
@@ -62,6 +63,7 @@ export async function POST(req: Request) {
       duration,
       description,
       link,
+      className,
       video: videoUrl,
       notes: notesUrl,
     });

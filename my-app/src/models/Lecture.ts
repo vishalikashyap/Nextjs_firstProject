@@ -10,6 +10,7 @@ const lectureSchema = new Schema(
     duration: { type: String, required: true },
     description: { type: String, required: true },
     link: { type: String, required: true },
+    className: { type: String, required: true },
     video: { type: String }, 
     notes: { type: String }, 
   },

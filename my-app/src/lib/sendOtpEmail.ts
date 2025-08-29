@@ -16,7 +16,7 @@ export default async function sendOtpEmail(to: string, otp: string) {
       subject: "Your LearnWithUs OTP Code",
       html: `
       <html>
-      <body  align="center" style="margin:0; padding:0; background-color:#0B0C10; width:100%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; ">
+      <body  align="center" style="margin:0; padding:0; background-color:#0B0C10; width:100% !importent; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; ">
 
         <table width="100%" cellpadding="0" cellspacing="0" style="padding:50px 0;">
           <tr>
