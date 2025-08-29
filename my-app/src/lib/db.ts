@@ -11,9 +11,9 @@ export async function connectDB() {
     });
 
     isConnected = true;
-    console.log("✅ MongoDB Connected to nextjs_first");
+    console.log("MongoDB Connected to nextjs_first");
   } catch (error) {
-    console.error("❌ MongoDB Connection Error:", error);
+    console.error(" MongoDB Connection Error:", error);
     throw new Error("Failed to connect to MongoDB");
   }
 }

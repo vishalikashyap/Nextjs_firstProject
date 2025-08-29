@@ -107,16 +107,16 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-100 text-gray-800">
       {/* Top Navbar */}
-      <header className="w-full bg-[#0B0C10]/90 text-white shadow px-6 py-4 flex justify-between items-center">
+      <header className="w-full bg-[#0B0C10]/90 text-white shadow px-6 py-4 flex justify-between items-center sticky top-0 z-10">
         <h1 className="text-2xl font-bold text-[#11988f]">LearnWithUs</h1>
         <div className="flex items-center gap-6">
-          {user && <span className="font-medium">👋 Hi, {user.name || "Student"}</span>}
+          {user && <span className="font-medium"> Hi, {user.name || "Student"}</span>}
         </div>
       </header>
 
       <div className="flex flex-1">
         {/* Sidebar */}
-        <Sidebar onSelect={setActivePage} onLogout={logout} />
+        <Sidebar onSelect={setActivePage} onLogout={logout}/>
 
         {/* Main Content */}
         <main className="flex-1 p-6">{renderContent()}</main>
